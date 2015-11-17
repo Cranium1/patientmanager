@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Patients</h1>
+
+<div class="infinity-table">
+  <% @patients.each do |patient| %>
+    <div>
+      <div style="display: inline-block;"><%= patient.id %></div>
+      <div style="display: inline-block;"><%= patient.name_first %></div>
+      <div style="display: inline-block;"><%= patient.name_last %></div>
+      <div style="display: inline-block;"><%= patient.hiv_positive %></div>
+      <div style="display: inline-block;"><%= patient.biopsy_pending %></div>
+      <div style="display: inline-block;"><%= patient.other_pending %></div>
+      <div style="display: inline-block;"><%= patient.cancer %></div>
+      <div style="display: inline-block;"><%= patient.date_seen %></div>
+      <div style="display: inline-block;"><%= patient.date_return %></div>
+      <div style="display: inline-block;"><%= link_to 'Show', patient %></div>
+      <div style="display: inline-block;"><%= link_to 'Edit', edit_patient_path(patient) %></div>
+      <div style="display: inline-block;"><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Patient', new_patient_path %>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript">
+        function scollPos() {
+            var div = document.getElementById("myDiv").scrollTop;
+            document.getElementById("pos").innerHTML = div;
+        }
+    </script>
+</head>
+<body>
+    <form id="form1">
+    <div id="pos">
+    </div>
+    <div id="myDiv" style="overflow: auto; height: 200px; width: 200px;" onscroll="scollPos();">
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+        <div>abc</div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name first:</strong>
+  <%= @patient.name_first %>
+</p>
+
+<p>
+  <strong>Name last:</strong>
+  <%= @patient.name_last %>
+</p>
+
+<p>
+  <strong>Hiv positive:</strong>
+  <%= @patient.hiv_positive %>
+</p>
+
+<p>
+  <strong>Biopsy pending:</strong>
+  <%= @patient.biopsy_pending %>
+</p>
+
+<p>
+  <strong>Other pending:</strong>
+  <%= @patient.other_pending %>
+</p>
+
+<p>
+  <strong>Cancer:</strong>
+  <%= @patient.cancer %>
+</p>
+
+<p>
+  <strong>Date seen:</strong>
+  <%= @patient.date_seen %>
+</p>
+
+<p>
+  <strong>Date return:</strong>
+  <%= @patient.date_return %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

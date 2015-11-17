@@ -1,0 +1,47 @@
+<%= form_for(@patient) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group">
+    <%= f.label :name_first, 'First' %>
+    <%= f.text_field :name_first, placeholder: "First", class: "form-control" %>
+  </div>
+  <div class="form_group">
+    <%= f.label :name_last, 'Last' %>
+    <%= f.text_field :name_last, placeholder: "Last", class: "form-control" %>
+  </div>
+  <div class="form_group">
+    <%= f.label :hiv_positive, class: "checkbox-inline" do %>
+      <%= f.check_box :hiv_positive %> HIV
+    <% end %>
+    <%= f.label :biopsy_pending, class: "checkbox-inline" do %>
+      <%= f.check_box :biopsy_pending %> Biopsy
+    <% end %>
+    <%= f.label :other_pending, class: "checkbox-inline" do %>
+      <%= f.check_box :other_pending %> Other
+    <% end %>
+    <%= f.label :cancer, class: "checkbox-inline" do %>
+      <%= f.check_box :cancer %> Cancer
+    <% end %>
+  </div>
+  <div class="form_group">
+    <%= f.label :date_seen %>
+    <%= f.date_select :date_seen %>
+  </div>
+  <div class="form_group">
+    <%= f.label :date_return %>
+    <%= f.date_select :date_return, {:include_blank => true, :default => nil} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
