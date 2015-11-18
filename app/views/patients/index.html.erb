@@ -2,44 +2,51 @@
 
 <h1>Listing Patients</h1>
 
-<div class="infinity-table" style="height: 500px; overflow-y: scroll;">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>First</th>
-      <th>Last</th>
-      <th>HIV</th>
-      <th>Pending Biopsy</th>
-      <th>Pending Other</th>
-      <th>Cancer</th>
-      <th>Date seen</th>
-      <th>Date return</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @patients.each do |patient| %>
-      <tr>
-        <td><%= patient.id %></td>
-        <td><%= patient.name_first %></td>
-        <td><%= patient.name_last %></td>
-        <td><%= patient.hiv_positive %></td>
-        <td><%= patient.biopsy_pending %></td>
-        <td><%= patient.other_pending %></td>
-        <td><%= patient.cancer %></td>
-        <td><%= patient.date_seen %></td>
-        <td><%= patient.date_return %></td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="myGrid" style="height: 500px;">
 </div>
 
 <br>
 
 <%= link_to 'New Patient', new_patient_path %>
+
+<%= javascript_include_tag "SlickGrid/lib/jquery.event.drag-2.2.js" %>
+<%= javascript_include_tag "SlickGrid/slick.core" %>
+<%= javascript_include_tag "SlickGrid/slick.grid" %>
+<%= stylesheet_link_tag "SlickGrid/slick.grid" %>
+
+<script>
+function getData(route, callback) {
+  $.getJSON(route, callback);
+}
+
+function initialload(data) {
+  data.forEach(function(record, index){
+    table[record["id"]] = record;
+  });
+  grid = new Slick.Grid("#myGrid", table, columns, options);
+}
+
+var table = [];
+
+$(document).ready(function() {
+  getData("/patients.json", initialload);
+});
+
+var grid;
+var columns = [
+  {id: "id", name: "ID", field: "id"},
+  {id: "name_first", name: "First", field: "name_first"},
+  {id: "name_last", name: "Last", field: "name_last"},
+  {id: "hiv", name: "HIV", field: "hiv_positive"},
+  {id: "biopsy_pending", name: "Biopsy", field: "biopsy_pending"},
+  {id: "other_pending", name: "Other", field: "other_pending"},
+  {id: "cancer", name: "Cancer", field: "cancer"},
+  {id: "date_seen", name: "Date Seen", field: "date_seen"},
+  {id: "date_return", name: "Date Return", field: "date_return"}
+];
+
+var options = {
+  enableCellNavigation: true,
+  enableColumnReorder: false
+};
+</script>

@@ -9,3 +9,8 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+Rails.application.config.assets.precompile += %w( SlickGrid/slick.core.js )
+Rails.application.config.assets.precompile += %w( SlickGrid/slick.grid.js )
+Rails.application.config.assets.precompile += %w( SlickGrid/slick.grid.css )
+Rails.application.config.assets.precompile += %w( SlickGrid/lib/jquery.event.drag-2.2.js )
