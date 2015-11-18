@@ -21,7 +21,8 @@ function getData(route, callback) {
 
 function initialload(data) {
   data.forEach(function(record, index){
-    table[record["id"]] = record;
+    // -1 because we start at 1 but arrays start at 0
+    table[record["id"]-1] = record;
   });
   grid = new Slick.Grid("#myGrid", table, columns, options);
 }
@@ -45,8 +46,15 @@ var columns = [
   {id: "date_return", name: "Date Return", field: "date_return"}
 ];
 
+// columns.forEach(function(thing){
+//   thing["resizable"] = false;
+// });
+
 var options = {
   enableCellNavigation: true,
-  enableColumnReorder: false
+  enableColumnReorder: false,
+  enableTextSelectionOnCells: true,
+  forceFitColumns: true,
+  fullWidthRows: true
 };
 </script>
